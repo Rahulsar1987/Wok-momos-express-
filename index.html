@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090909">
+<title>Wok & Momos Express | Chef Arup</title>
+<meta name="description" content="Wok & Momos Express — Pan-Asian Kitchen curated by Chef Arup. Momos, Dim Sum, Bao, Appetizers, Rice, Noodles, Soups and Combo Menus.">
+<style>
+:root{
+  --bg:#080808; --panel:#121212; --gold:#f5a400; --red:#e21b23;
+  --cream:#f7f2e8; --muted:#bdb7aa; --line:#3a2a12;
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at top,#211506 0,#080808 34%,#050505 100%);color:var(--cream);font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+header{position:sticky;top:0;z-index:20;background:rgba(5,5,5,.94);backdrop-filter:blur(10px);border-bottom:1px solid #38260d}
+.nav{max-width:1150px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;gap:15px}
+.brand{font-weight:900;letter-spacing:1px;font-size:19px}.brand span{color:var(--red)}
+nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+nav a{padding:9px 12px;border-radius:999px;color:#eee;font-size:13px;font-weight:700}
+nav a:hover,nav a.active{background:var(--red)}
+.hero{min-height:72vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:70px 18px 55px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(226,27,35,.12),transparent 42%,rgba(245,164,0,.10));pointer-events:none}
+.hero-inner{max-width:900px;position:relative}
+.badge{display:inline-block;border:1px solid #8b5b11;color:var(--gold);padding:8px 14px;border-radius:999px;font-size:12px;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(45px,9vw,96px);line-height:.88;margin:20px 0 10px;font-weight:1000;text-transform:uppercase;font-style:italic}
+h1 .w{color:#f5a400} h1 .m{color:#fff} h1 .e{color:var(--red)}
+.tag{font-size:clamp(17px,3vw,25px);letter-spacing:6px;font-weight:800;color:#ddd}
+.hero p{max-width:700px;margin:22px auto;color:var(--muted);font-size:16px;line-height:1.6}
+.ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:25px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:10px;font-weight:900;border:1px solid #6d4b16}
+.btn.primary{background:var(--red);border-color:var(--red)} .btn.secondary{background:#151515}
+section{max-width:1150px;margin:auto;padding:65px 18px}
+.section-title{text-align:center;margin-bottom:30px}
+.section-title h2{margin:0;font-size:34px;text-transform:uppercase}.section-title p{color:var(--muted);margin:8px 0}
+.menu-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:25px}
+.tab{cursor:pointer;background:#151515;color:#ddd;border:1px solid #4a3414;border-radius:999px;padding:10px 16px;font-weight:800}
+.tab.active{background:var(--gold);color:#080808;border-color:var(--gold)}
+.menu-page{display:none}.menu-page.show{display:block}
+.menu-page img{width:100%;max-width:850px;display:block;margin:auto;border-radius:14px;border:1px solid #4b3415;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.note{text-align:center;color:#a9a194;font-size:13px;margin-top:15px}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{background:linear-gradient(145deg,#171717,#0d0d0d);border:1px solid #3c2b12;border-radius:14px;padding:20px;text-align:center}
+.card b{display:block;color:var(--gold);font-size:17px;margin-bottom:6px}.card span{color:#bdb7aa;font-size:13px}
+.contact{background:linear-gradient(145deg,#160a0b,#0e0e0e);border:1px solid #4a1c1f;border-radius:18px;padding:28px;text-align:center}
+.contact h2{margin-top:0}.phone{font-size:24px;font-weight:900;margin:8px}.phone a{color:#fff}.wa{color:#52d273}
+footer{border-top:1px solid #2f210f;text-align:center;padding:30px 18px;color:#8e887c;font-size:13px}
+@media(max-width:760px){nav{display:none}.quick{grid-template-columns:repeat(2,1fr)}section{padding:45px 12px}.hero{min-height:65vh}}
+@media(max-width:430px){.quick{grid-template-columns:1fr}.tag{letter-spacing:3px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="#home">WOK & <span>MOMOS</span> EXPRESS</a>
+    <nav>
+      <a href="#home">Home</a><a href="#menu">Menu</a><a href="#momos">Momos</a>
+      <a href="#appetizers">Appetizers</a><a href="#rice">Rice & Noodles</a>
+      <a href="#combos">Combos</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <span class="badge">Pan-Asian Kitchen • Curated by Chef Arup</span>
+    <h1><span class="w">Wok &</span> <span class="m">Momos</span> <span class="e">Express</span></h1>
+    <div class="tag">MORE FLAVOUR • MORE CHOICE • MORE SATISFACTION</div>
+    <p>Chef-crafted Asian flavours featuring Momos, Dim Sum, Bao, Appetizers, Soups, Rice, Noodles and value-packed Combo Menus.</p>
+    <div class="ctas"><a class="btn primary" href="#menu">View Final Menu</a><a class="btn secondary" href="tel:+916295665406">Call / Order</a><a class="btn secondary" href="https://wa.me/918583939344" target="_blank">WhatsApp</a></div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="section-title"><h2>Our Final Menu</h2><p>Tap a category to view the menu page.</p></div>
+  <div class="menu-tabs">
+    <button class="tab active" data-page="1">Soups</button>
+    <button class="tab" data-page="2" id="momos">Momos • Dim Sum • Bao</button>
+    <button class="tab" data-page="3" id="appetizers">Appetizers</button>
+    <button class="tab" data-page="4" id="rice">Rice & Noodles</button>
+    <button class="tab" data-page="5" id="combos">Momos Combo</button>
+    <button class="tab" data-page="6">Rice & Noodles Combo</button>
+  </div>
+
+  <div class="menu-page show" data-content="1"><img src="assets/menu-page-1.jpg" alt="Wok & Momos Express Soups Menu"></div>
+  <div class="menu-page" data-content="2"><img src="assets/menu-page-2.jpg" alt="Wok & Momos Express Momos Dim Sum Bao Menu"></div>
+  <div class="menu-page" data-content="3"><img src="assets/menu-page-3.jpg" alt="Wok & Momos Express Appetizers Menu"></div>
+  <div class="menu-page" data-content="4"><img src="assets/menu-page-4.jpg" alt="Wok & Momos Express Rice and Noodles Menu"></div>
+  <div class="menu-page" data-content="5"><img src="assets/menu-page-5.jpg" alt="Wok & Momos Express Momos Combo Menu"></div>
+  <div class="menu-page" data-content="6"><img src="assets/menu-page-6.jpg" alt="Wok & Momos Express Rice and Noodles Combo Menu"></div>
+  <div class="note">Final menu artwork is used as provided, including the corrected Momos Combo wording: 8 PC • Choose Any 4 Flavours • 2 Pc Each.</div>
+</section>
+
+<section>
+  <div class="section-title"><h2>Why Choose Us</h2><p>Chef-crafted Asian food with bold flavours and premium presentation.</p></div>
+  <div class="quick">
+    <div class="card"><b>Chef Crafted</b><span>Curated by Chef Arup</span></div>
+    <div class="card"><b>Fresh Ingredients</b><span>Freshly prepared menu</span></div>
+    <div class="card"><b>Big Flavours</b><span>Pan-Asian flavour profile</span></div>
+    <div class="card"><b>Great Value</b><span>Combo choices for every appetite</span></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <h2>Call / Order</h2>
+    <div class="phone"><a href="tel:+916295665406">6295665406</a></div>
+    <div class="phone"><a class="wa" href="https://wa.me/918583939344" target="_blank">WhatsApp: 8583939344</a></div>
+    <p style="color:#a9a194">Wok & Momos Express • Chef Arup</p>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Wok & Momos Express • Chef Arup • Pan-Asian Kitchen</footer>
+
+<script>
+const tabs=[...document.querySelectorAll('.tab')];
+const pages=[...document.querySelectorAll('.menu-page')];
+function showPage(n){
+  tabs.forEach(t=>t.classList.toggle('active',t.dataset.page===String(n)));
+  pages.forEach(p=>p.classList.toggle('show',p.dataset.content===String(n)));
+  document.getElementById('menu').scrollIntoView({behavior:'smooth',block:'start'});
+}
+tabs.forEach(t=>t.addEventListener('click',()=>showPage(t.dataset.page)));
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',e=>{
+  const href=a.getAttribute('href');
+  if(href==='#momos') showPage(2);
+  if(href==='#appetizers') showPage(3);
+  if(href==='#rice') showPage(4);
+  if(href==='#combos') showPage(5);
+}));
+</script>
+</body>
+</html>
