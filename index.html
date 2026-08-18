@@ -1,74 +1,95 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Wok & Momos Express | Digital Order</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wok & Momos Express | Chef Arup | Opening Soon</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0d0d0d;color:#fff;font-family:Arial,sans-serif}
-header{background:linear-gradient(135deg,#090909,#2b1d08);padding:22px 15px;text-align:center;border-bottom:2px solid #d4af37;position:sticky;top:0;z-index:5}
-h1{margin:0;color:#d4af37;font-size:28px}header p{margin:6px 0 0;color:#ddd}
-.wrap{max-width:720px;margin:auto;padding:12px 12px 130px}
-.search{width:100%;padding:13px;border-radius:10px;border:1px solid #555;background:#1c1c1c;color:#fff;margin:10px 0 15px;font-size:16px}
-.cat{margin:18px 0 8px;color:#d4af37;font-size:20px;border-left:4px solid #d4af37;padding-left:9px}
-.item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#191919;border:1px solid #303030;border-radius:12px;padding:12px;margin:8px 0}
-.name{font-weight:700;font-size:15px}.price{color:#d4af37;margin-top:5px}
-.add{background:#d4af37;color:#111;border:0;border-radius:9px;padding:9px 14px;font-weight:800}
-.cart{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);width:min(690px,94%);background:#d4af37;color:#111;border-radius:15px;padding:12px 14px;box-shadow:0 5px 30px #000;z-index:10}
-.carttop{display:flex;justify-content:space-between;font-weight:800}.checkout{background:#111;color:#fff;border:0;border-radius:9px;padding:11px;width:100%;margin-top:8px;font-weight:800}
-.panel{background:#181818;border:1px solid #333;border-radius:13px;padding:14px;margin-top:15px}
-input,select{width:100%;padding:12px;margin:6px 0;background:#222;color:#fff;border:1px solid #555;border-radius:8px}
-.qty{display:flex;align-items:center;gap:7px}.qty button{border:0;border-radius:7px;padding:6px 10px}
-.hidden{display:none}.orderline{padding:7px 0;border-bottom:1px solid #333}
-.note{font-size:12px;color:#aaa}
-</style></head><body>
-<header><h1>Wok & Momos Express</h1><p>Chef Arup • Digital Order</p></header>
-<div class="wrap">
+*{box-sizing:border-box}body{margin:0;background:#080808;color:#fff;font-family:Arial,sans-serif}
+header{min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px 16px;
+background:linear-gradient(#0008,#000b),url('menu-page-1.jpg') center/cover fixed}
+.hero{max-width:700px}.brand{font-size:clamp(42px,10vw,78px);font-weight:900;color:#d7ad32;letter-spacing:-2px;text-shadow:0 3px 12px #000}
+.hero h2{font-size:clamp(28px,6vw,48px);margin:10px 0;color:#fff}.hero p{font-size:20px;color:#ddd}
+.badge{display:inline-block;border:2px solid #d7ad32;color:#d7ad32;border-radius:30px;padding:10px 22px;font-weight:800;letter-spacing:2px}
+.btn{display:inline-block;border:0;border-radius:12px;padding:14px 26px;margin:10px 6px;font-weight:900;font-size:17px;text-decoration:none;cursor:pointer}
+.primary{background:#d7ad32;color:#111}.dark{background:#161616;color:#fff;border:1px solid #d7ad32}
+section{max-width:900px;margin:auto;padding:42px 16px}h2.title{text-align:center;color:#d7ad32;font-size:32px}
+.gallery img{width:100%;display:block;margin:18px auto;border-radius:12px;border:1px solid #4a3920}
+.order{background:#101010;border-top:2px solid #d7ad32}.search{width:100%;padding:14px;border-radius:10px;border:1px solid #555;background:#1d1d1d;color:#fff;font-size:16px;margin:12px 0}
+.cat{color:#d7ad32;font-size:22px;margin:22px 0 8px;border-left:4px solid #d7ad32;padding-left:9px}
+.item{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#191919;border:1px solid #303030;border-radius:12px;padding:13px;margin:8px 0}
+.name{font-weight:700}.price{color:#d7ad32;margin-top:5px}button.add{background:#d7ad32;color:#111;border:0;border-radius:9px;padding:9px 14px;font-weight:900}
+.cart{position:sticky;bottom:10px;background:#d7ad32;color:#111;border-radius:15px;padding:12px 14px;z-index:10;box-shadow:0 5px 25px #000}
+.carttop{display:flex;justify-content:space-between;font-weight:900}.checkout{background:#111;color:#fff;border:0;border-radius:9px;padding:11px;width:100%;margin-top:8px;font-weight:900}
+.panel{background:#181818;border:1px solid #333;border-radius:13px;padding:14px;margin-top:16px}input,select{width:100%;padding:12px;margin:6px 0;background:#222;color:#fff;border:1px solid #555;border-radius:8px}
+.hidden{display:none}.line{padding:7px 0;border-bottom:1px solid #333}pre{white-space:pre-wrap}
+footer{text-align:center;padding:30px 16px;border-top:1px solid #332816;color:#aaa}footer strong{color:#d7ad32}
+</style>
+</head>
+<body>
+<header>
+<div class="hero">
+<div class="badge">OPENING SOON</div>
+<div class="brand">WOK & MOMOS EXPRESS</div>
+<h2>Pan-Asian Kitchen</h2>
+<p>Curated by <strong>Chef Arup</strong></p>
+<a class="btn primary" href="#order">ORDER NOW</a>
+<a class="btn dark" href="#menu">VIEW MENU</a>
+</div>
+</header>
+
+<section id="menu">
+<h2 class="title">Our Menu</h2>
+<div class="gallery">
+<img src="menu-page-1.jpg" alt="Wok & Momos Express Menu Page 1">
+<img src="menu-page-2.jpg" alt="Wok & Momos Express Menu Page 2">
+<img src="menu-page-3.jpg" alt="Wok & Momos Express Menu Page 3">
+<img src="menu-page-4.jpg" alt="Wok & Momos Express Menu Page 4">
+<img src="menu-page-5.jpg" alt="Wok & Momos Express Menu Page 5">
+<img src="menu-page-6.jpg" alt="Wok & Momos Express Menu Page 6">
+</div>
+</section>
+
+<section class="order" id="order">
+<h2 class="title">Digital Ordering</h2>
+<p style="text-align:center;color:#bbb">Select any items from the full menu and send your order directly to WhatsApp.</p>
 <input id="search" class="search" placeholder="🔎 Search menu item..." oninput="render()">
-<div id="menu"></div>
-<div id="checkout" class="panel hidden">
-<h2>Confirm Order</h2><div id="summary"></div>
-<input id="customer" placeholder="Customer name">
-<input id="table" placeholder="Table number">
+<div id="menuList"></div>
+<div id="checkout" class="panel hidden"><h2>Confirm Order</h2><div id="summary"></div>
+<input id="customer" placeholder="Customer name"><input id="table" placeholder="Table number">
 <select id="payment"><option>Pay at Counter</option><option>UPI</option></select>
-<button class="checkout" onclick="confirmOrder()">CONFIRM & PLACE ORDER</button>
-<p class="note">After confirmation, the order summary is prepared for sending to the restaurant.</p>
-</div></div>
+<button class="checkout" onclick="confirmOrder()">CONFIRM & PLACE ORDER</button></div>
+</section>
+
 <div class="cart"><div class="carttop"><span>🛒 <span id="count">0</span> items</span><span>₹<span id="total">0</span></span></div>
 <button class="checkout" onclick="openCheckout()">VIEW CART & ORDER</button></div>
+
+<footer><strong>WOK & MOMOS EXPRESS</strong><br>Chef Arup • Pan-Asian Kitchen<br>OPENING SOON</footer>
+
 <script>
 const MENU={"Momos & Dim Sum": [["Darjeeling Chicken Momos", 160], ["Tandoori Chicken Momos", 180], ["Pan Fried Chicken Momos", 180], ["Chicken Momos in Toasted Hot Garlic Sauce", 190], ["Afgani Chicken Momos", 190], ["Pan Fried Chicken Momos in Toasted Schezwan Sauce", 190], ["Singapore Prawn Gar Gao Dim Sum", 250], ["Chicken & Chilli Basil Dim Sum", 210], ["Kafir Lime Chicken Dim Sum", 210], ["Darjeeling Veg Momos", 140], ["Tandoori Veg Momos", 160], ["Pan Fried Veg Momos", 160], ["Veg Momos in Toasted Hot Garlic Sauce", 170], ["Afgani Veg Momos", 170], ["Pan Fried Veg Momos in Toasted Schezwan Sauce", 170], ["Corn & Cheese Dim Sum", 190], ["Spinach Cream Cheese Dim Sum", 250], ["Broccoli Cream Cheese Bao", 190], ["Mandarin Chicken Bao", 210]], "Veg Appetizers": [["Cream Cheese Money Bag", 190], ["Chilli Paneer Thele Wala", 190], ["Dynamite Broccoli", 180], ["Chilli Cheese Stuffed Mushroom", 200], ["Smokey Spring Roll Veg", 160]], "Seafood Appetizers": [["Ebi Tempura Prawn", 260], ["XO Fish Finger", 240], ["Sambal Grill Prawn", 280]], "Non-Veg Appetizers": [["Chicken 65", 180], ["Pepper Chicken Fry", 190], ["Drums of Heaven", 210], ["Chongqing Chicken", 210], ["Sambal Chicken Satay", 220], ["Malaysian Chicken Satay", 220], ["Korean Style Chicken", 220]], "Soups": [["Veg Manchow Soup", 120], ["Chicken Manchow Soup", 140], ["Veg Hot & Sour Soup", 120], ["Chicken Hot & Sour Soup", 140], ["Spicy Chicken Meat Ball Soup", 160], ["Classic Dim Sum Noodle Soup", 160], ["Thukpa Veg", 150], ["Lemon Coriander Veg", 120], ["Tom Yum Veg", 130], ["Tom Kha Veg", 140], ["Tom Yum Chicken", 150], ["Tom Kha Chicken", 160], ["Add Prawn", 40], ["Add Chicken", 30]], "Rice": [["Veg Fried Rice", 150], ["Veg Schezwan Rice", 160], ["Chilli Garlic Rice Veg", 160], ["Ginger Capsicum Rice", 160], ["Garlic Butter Fried Rice Veg", 170], ["Nasi Goreng Rice Veg", 180], ["XO Rice Veg", 190], ["Chicken Fried Rice", 190], ["Nasi Goreng Chicken", 210], ["Nasi Goreng Mix", 230], ["Garlic Butter Fried Rice Chicken", 210], ["Garlic Butter Fried Rice Mix", 230], ["Chilli Garlic Fried Rice Chicken", 210], ["Chilli Garlic Fried Rice Mix", 230], ["Schezwan Fried Rice Chicken", 210], ["Schezwan Fried Rice Mix", 230], ["XO Fried Rice Chicken", 220], ["XO Fried Rice Mix", 240], ["Ginger Capsicum Fried Rice Chicken", 210], ["Ginger Capsicum Fried Rice Mix", 230]], "Noodles": [["Mamak Mee Goreng Veg", 170], ["Mamak Mee Goreng Chicken", 200], ["Mamak Mee Goreng Mix", 220], ["Chilli Garlic Noodles Veg", 160], ["Schezwan Noodles Veg", 160], ["XO Noodles Veg", 190], ["Pad Thai Noodles Chicken", 220], ["Pad Thai Noodles Mix", 240], ["Char Kway Teow Chicken", 220], ["Char Kway Teow Mix", 240], ["Hakka Noodles Chicken", 190], ["Hakka Noodles Mix", 210]], "Combos": [["Veg Appetizer Combo", 290], ["Chicken Appetizer Combo", 310], ["Veg Rice & Noodles Combo", 280], ["Non-Veg Rice & Noodles Combo", 310], ["Momos Combo — choose any 4 flavours / 8 pcs", 0]]};
-let cart={};
 const WHATSAPP='918583939344';
+let cart={};
 function allItems(){let a=[];for(const [cat,items] of Object.entries(MENU))items.forEach(x=>a.push({cat,name:x[0],price:x[1]}));return a}
 const ITEMS=allItems();
-function render(){
- const q=document.getElementById('search').value.toLowerCase();let out='';
- for(const [cat,items] of Object.entries(MENU)){
-  const shown=items.filter(x=>x[0].toLowerCase().includes(q)); if(!shown.length)continue;
-  out+=`<div class="cat">${cat}</div>`;
-  shown.forEach(x=>{const idx=ITEMS.findIndex(a=>a.name===x[0]);out+=`<div class="item"><div><div class="name">${x[0]}</div><div class="price">₹${x[1]||'—'}</div></div><button class="add" onclick="add(${idx})">ADD</button></div>`})
- }
- document.getElementById('menu').innerHTML=out||'<p>No item found.</p>'; updateCart()
+function render(){const q=document.getElementById('search').value.toLowerCase();let out='';
+for(const [cat,items] of Object.entries(MENU)){
+const shown=items.filter(x=>x[0].toLowerCase().includes(q));if(!shown.length)continue;
+out+=`<div class="cat">${cat}</div>`;
+shown.forEach(x=>{const idx=ITEMS.findIndex(a=>a.name===x[0]);out+=`<div class="item"><div><div class="name">${x[0]}</div><div class="price">₹${x[1]||'—'}</div></div><button class="add" onclick="add(${idx})">ADD</button></div>`})
 }
+document.getElementById('menuList').innerHTML=out||'<p>No item found.</p>';updateCart()}
 function add(i){if(!ITEMS[i].price){alert('This combo price needs to be set.');return}cart[i]=(cart[i]||0)+1;updateCart()}
 function change(i,d){cart[i]=(cart[i]||0)+d;if(cart[i]<=0)delete cart[i];updateCart();openCheckout(false)}
-function updateCart(){
- let c=0,t=0;Object.entries(cart).forEach(([i,q])=>{c+=q;t+=ITEMS[i].price*q});
- document.getElementById('count').textContent=c;document.getElementById('total').textContent=t
-}
-function openCheckout(scroll=true){
- if(!Object.keys(cart).length){alert('Please select at least one item.');return}
- let s='';Object.entries(cart).forEach(([i,q])=>s+=`<div class="orderline">${ITEMS[i].name} × ${q} — ₹${ITEMS[i].price*q}</div>`);
- document.getElementById('summary').innerHTML=s+`<h3>Total: ₹${document.getElementById('total').textContent}</h3>`;
- document.getElementById('checkout').classList.remove('hidden');if(scroll)document.getElementById('checkout').scrollIntoView({behavior:'smooth'})
-}
-function confirmOrder(){
- if(!document.getElementById('table').value.trim()){alert('Please enter table number.');return}
- let lines=Object.entries(cart).map(([i,q])=>`${ITEMS[i].name} x ${q} — ₹${ITEMS[i].price*q}`).join('\n');
- let text=`*WOK & MOMOS EXPRESS — NEW ORDER*\nTable: ${document.getElementById('table').value}\nCustomer: ${document.getElementById('customer').value||'Guest'}\nPayment: ${document.getElementById('payment').value}\n\n${lines}\n\n*Total: ₹${document.getElementById('total').textContent}*`;
- document.getElementById('summary').innerHTML='<h3>✅ Order created</h3><p>Tap the button below to send this order to Wok & Momos Express on WhatsApp.</p><button class="checkout" onclick="sendWhatsApp()">SEND ORDER ON WHATSAPP</button>';
- window.pendingOrder=text;
-}
-function sendWhatsApp(){
- const url='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(window.pendingOrder||'');
- window.open(url,'_blank');
-}
+function updateCart(){let c=0,t=0;Object.entries(cart).forEach(([i,q])=>{c+=q;t+=ITEMS[i].price*q});document.getElementById('count').textContent=c;document.getElementById('total').textContent=t}
+function openCheckout(scroll=true){if(!Object.keys(cart).length){alert('Please select at least one item.');return}let s='';
+Object.entries(cart).forEach(([i,q])=>s+=`<div class="line">${ITEMS[i].name} × ${q} — ₹${ITEMS[i].price*q}</div>`);
+document.getElementById('summary').innerHTML=s+`<h3>Total: ₹${document.getElementById('total').textContent}</h3>`;
+document.getElementById('checkout').classList.remove('hidden');if(scroll)document.getElementById('checkout').scrollIntoView({behavior:'smooth'})}
+function confirmOrder(){if(!document.getElementById('table').value.trim()){alert('Please enter table number.');return}
+let lines=Object.entries(cart).map(([i,q])=>`${ITEMS[i].name} x ${q} — ₹${ITEMS[i].price*q}`).join('\n');
+let text=`*WOK & MOMOS EXPRESS — NEW ORDER*\nTable: ${document.getElementById('table').value}\nCustomer: ${document.getElementById('customer').value||'Guest'}\nPayment: ${document.getElementById('payment').value}\n\n${lines}\n\n*Total: ₹${document.getElementById('total').textContent}*`;
+document.getElementById('summary').innerHTML='<h3>✅ Order created</h3><button class="checkout" onclick="sendWhatsApp()">SEND ORDER ON WHATSAPP</button>';window.pendingOrder=text}
+function sendWhatsApp(){window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(window.pendingOrder||''),'_blank')}
 render();
-</script></body></html>
+</script>
+</body></html>
