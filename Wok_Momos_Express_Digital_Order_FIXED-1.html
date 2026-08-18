@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wok & Momos Express — Chef Arup</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#080808;color:#fff;font-family:Arial,sans-serif}
+header{min-height:88vh;background:linear-gradient(rgba(0,0,0,.70),rgba(0,0,0,.84)),url('menu-page-1.jpg') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px}
+.hero h1{font-size:48px;color:#e7b928;margin:8px}.hero h2{font-size:30px;margin:8px}.hero p{font-size:21px}.soon{display:inline-block;border:2px solid #e7b928;border-radius:40px;padding:12px 30px;color:#e7b928;font-weight:700;letter-spacing:3px}
+.btn{display:inline-block;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:800;margin:8px;border:1px solid #e7b928}.gold{background:#e7b928;color:#111}.dark{color:#fff;background:#111}
+.wrap{max-width:760px;margin:auto;padding:20px}.section{margin:30px 0}.section h2{text-align:center;color:#e7b928;font-size:32px}
+.menuimg{width:100%;border-radius:12px;margin:8px 0;border:1px solid #333}
+.search{width:100%;padding:14px;border-radius:10px;background:#191919;color:#fff;border:1px solid #555;font-size:16px;margin:10px 0 18px}
+.cat{color:#e7b928;font-size:22px;margin:24px 0 8px;border-left:5px solid #e7b928;padding-left:10px}
+.item,.choice{background:#171717;border:1px solid #303030;border-radius:12px;padding:12px;margin:8px 0}
+.item{display:flex;justify-content:space-between;align-items:center;gap:10px}.name{font-weight:700}.price{color:#e7b928;margin-top:4px}
+.add,.select{border:0;border-radius:9px;background:#e7b928;color:#111;padding:9px 13px;font-weight:800}.selected{background:#fff;color:#111}
+.panel{background:#151515;border:1px solid #333;border-radius:14px;padding:15px;margin:14px 0}
+.panel h3{color:#e7b928;margin-top:0}.limit{font-size:13px;color:#bbb}
+input,select{width:100%;padding:12px;background:#222;color:#fff;border:1px solid #555;border-radius:8px;margin:6px 0}
+.cartbar{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);width:min(720px,94%);background:#e7b928;color:#111;border-radius:15px;padding:12px 15px;z-index:10;box-shadow:0 5px 30px #000}
+.carttop{display:flex;justify-content:space-between;font-weight:800}.cartbtn{width:100%;margin-top:8px;padding:11px;border:0;border-radius:9px;background:#111;color:#fff;font-weight:800}
+.hidden{display:none}.summaryline{padding:7px 0;border-bottom:1px solid #333}
+footer{text-align:center;padding:35px;color:#aaa}.goldtxt{color:#e7b928}
+</style></head><body>
+<header><div class="hero"><div class="soon">OPENING SOON</div><h1>WOK & MOMOS EXPRESS</h1><h2>Pan-Asian Kitchen</h2><p>Curated by <b>Chef Arup</b></p><a class="btn gold" href="#order">ORDER NOW</a><a class="btn dark" href="#menu">VIEW MENU</a></div></header>
+<div class="wrap" id="menu"><div class="section"><h2>Our Menu</h2>
+<img class="menuimg" src="menu-page-1.jpg"><img class="menuimg" src="menu-page-2.jpg"><img class="menuimg" src="menu-page-3.jpg"><img class="menuimg" src="menu-page-4.jpg">
+<img class="menuimg" src="menu-page-5.jpg"><img class="menuimg" src="menu-page-6.jpg"></div>
+<div class="section" id="order"><h2>Digital Ordering</h2><p style="text-align:center;color:#ccc">Select items from the full menu and send your order directly to WhatsApp.</p>
+<input id="search" class="search" placeholder="🔎 Search menu item..." oninput="renderStandard()">
+<div id="standard"></div>
+<div id="combos"></div>
+<div id="checkout" class="panel hidden"><h3>Confirm Order</h3><div id="summary"></div><input id="customer" placeholder="Customer name"><input id="table" placeholder="Table number"><select id="payment"><option>Pay at Counter</option><option>UPI</option></select><button type="button" class="cartbtn" onclick="sendOrder()">CONFIRM & SEND TO WHATSAPP</button></div>
+</div></div>
+<div class="cartbar"><div class="carttop"><span>🛒 <span id="count">0</span> items</span><span>₹<span id="total">0</span></span></div><button type="button" class="cartbtn" onclick="openCart()">VIEW CART & ORDER</button></div>
+<footer><b class="goldtxt">WOK & MOMOS EXPRESS</b><br>Chef Arup • Pan-Asian Kitchen<br>OPENING SOON</footer>
+<script>
+const MENU={"Soups": [["Tom Yum Veg", 130], ["Tom Kha Veg", 140], ["Veg Manchow Soup", 120], ["Veg Hot & Sour Soup", 120], ["Thukpa Veg", 150], ["Lemon Coriander Veg", 120], ["Tom Yum Chicken", 150], ["Tom Kha Chicken", 160], ["Chicken Manchow Soup", 140], ["Chicken Hot & Sour Soup", 140], ["Spicy Chicken Meat Ball Soup", 160], ["Classic Dim Sum Noodle Soup", 160], ["Add Prawn", 40], ["Add Chicken", 30]], "Momos & Dim Sum": [["Darjeeling Chicken Momos", 150], ["Tandoori Chicken Momos", 160], ["Pan Fried Chicken Momos", 160], ["Chicken Cheese Momos", 170], ["Chicken Momos in Toasted Hot Garlic Sauce", 170], ["Afgani Chicken Momos", 160], ["Pan Fried Chicken Momos in Toasted Schezwan Sauce", 170], ["Darjeeling Veg Momos", 130], ["Tandoori Veg Momos", 140], ["Pan Fried Veg Momos", 140], ["Corn and Cheese Momos", 150], ["Veg Momos in Toasted Hot Garlic Sauce", 150], ["Afgani Veg Momos", 140], ["Pan Fried Veg Momos in Toasted Schezwan Sauce", 150], ["Singapore Prawn Har Gao", 250], ["Chicken and Chilli Basil Dim Sum", 240], ["Kafir Lime Chicken Dim Sum", 240], ["Corn and Cheese Dim Sum", 220], ["Spinach Cream Cheese Dim Sum", 240]], "Bao": [["Korean Chicken Bao", 250], ["Mandarin Chicken Bao", 240], ["Spicy Sambal Mushroom Bao", 230], ["Broccoli Cream Cheese Bao", 240]], "Veg Appetizers": [["Cream Cheese Money Bag", 220], ["Chilli Paneer Thele Wala", 210], ["Dynamite Broccoli", 210], ["Chilli Cheese Stuffed Mushroom", 220], ["Smokey Spring Roll Veg", 190]], "Seafood Appetizers": [["Ebi Tempura Prawn", 360], ["XO Fish Finger", 330], ["Sambal Grill Prawn", 399]], "Non-Veg Appetizers": [["Chicken 65", 240], ["Pepper Chicken Fry", 250], ["Drums of Heaven", 260], ["Chongqing Chicken", 270], ["Sambal Chicken Satay", 260], ["Malaysian Chicken Satay", 260], ["Korean Style Chicken Appetizer", 270]], "Veg Rice": [["Veg Fried Rice", 180], ["Veg Schezwan Rice", 190], ["Chilli Garlic Rice Veg", 190], ["Nasi Goreng Rice Veg", 200], ["XO Rice Veg", 220]], "Chicken & Mix Rice": [["Chicken Fried Rice", 210], ["Nasi Goreng Chicken & Mix", 230], ["Garlic Butter Fried Rice Chicken & Mix", 240], ["Chilli Garlic Fried Rice Chicken & Mix", 230], ["Schezwan Fried Rice Chicken & Mix", 230], ["XO Fried Rice Chicken & Mix", 250]], "Veg Noodles": [["Veg Hakka Noodles", 180], ["Veg Schezwan Noodles", 190], ["Chilli Garlic Noodles Veg", 190], ["Mamak Mee Goreng Veg", 210]], "Chicken & Mix Noodles": [["Mamak Mee Goreng Chicken & Mix", 240], ["Chilli Garlic Noodles Chicken & Mix", 230], ["Schezwan Noodles Chicken & Mix", 230], ["XO Noodles Chicken & Mix", 250], ["Pad Thai Noodles Chicken & Mix", 240], ["Char Kway Teow Chicken & Mix", 240], ["Hakka Noodles Chicken & Mix", 220]]};
+const COMBO={"Veg Momos Combo": {"price": 179, "note": "8 pcs • Choose any 4 flavours • 2 pcs each", "choices": ["Darjeeling Veg Momos", "Pan Fried Veg Momos", "Veg Momos in Toasted Hot Garlic Sauce", "Afgani Veg Momos", "Pan Fried Veg Momos in Toasted Schezwan Sauce"], "type": "momos", "max": 4}, "Chicken Momos Combo": {"price": 209, "note": "8 pcs • Choose any 4 flavours • 2 pcs each", "choices": ["Darjeeling Chicken Momos", "Pan Fried Chicken Momos", "Chicken Momos in Toasted Hot Garlic Sauce", "Afgani Chicken Momos", "Pan Fried Chicken Momos in Toasted Schezwan Sauce"], "type": "momos", "max": 4}, "Veg Appetizer Combo": {"price": 290, "note": "Choose any 4 items", "choices": ["Cream Cheese Money Bag — 3 Pc", "Chilli Paneer Thele Wala — 4 Pc", "Dynamite Broccoli — 4 Pc", "Chilli Cheese Stuffed Mushroom — 4 Pc", "Smokey Spring Roll Veg — 2 Pc"], "type": "app", "max": 4}, "Chicken Appetizer Combo": {"price": 310, "note": "Choose any 4 items", "choices": ["Chicken 65 — 4 Pc", "Pepper Chicken Fry — 4 Pc", "Drums of Heaven — 2 Pc", "Chongqing Chicken (Julienne Thin Cut) — 6 Pc", "Sambal Chicken Satay — 2 Pc", "Malaysian Chicken Satay — 2 Pc", "Korean Style Chicken Appetizer — 4 Pc"], "type": "app", "max": 4}, "Veg Rice & Noodles Combo": {"price": 280, "note": "Choose 1 Rice/Noodles + 1 Veg Appetizer + 1 Veg Gravy + 1 Drink", "rice": ["Veg Fried Rice", "Veg Schezwan Rice", "Chilli Garlic Rice Veg", "Ginger Capsicum Rice", "Garlic Butter Fried Rice", "XO Rice Veg", "Mamak Mee Goreng Veg", "Chilli Garlic Noodles Veg", "Schezwan Noodles Veg", "XO Noodles Veg", "Char Kway Teow Veg", "Hakka Noodles Veg"], "app": ["Cream Cheese Money Bag", "Chilli Paneer Thele Wala", "Dynamite Broccoli", "Chilli Cheese Stuffed Mushroom", "Smokey Spring Roll Veg"], "gravy": ["Chilli Paneer Gravy", "Veg Manchurian Gravy", "Thai Basil Tofu / Veg", "Kung Pao Vegetables", "Hot Garlic Vegetables"], "drink": ["Sprite", "Coca-Cola", "Thums Up"]}, "Non-Veg Rice & Noodles Combo": {"price": 310, "note": "Choose 1 Rice/Noodles + 1 Chicken Appetizer + 1 Chicken Gravy + 1 Drink", "rice": ["Chicken Fried Rice", "Chilli Garlic Rice Chicken", "Garlic Butter Fried Rice Chicken", "Schezwan Fried Rice Chicken", "XO Fried Rice Chicken", "Ginger Capsicum Fried Rice Chicken", "Mamak Mee Goreng Chicken", "Chilli Garlic Noodles Chicken", "Schezwan Noodles Chicken", "XO Noodles Chicken", "Char Kway Teow Chicken", "Hakka Noodles Chicken"], "app": ["Chicken 65", "Pepper Chicken Fry", "Drums of Heaven", "Chongqing Chicken", "Sambal Chicken Satay", "Malaysian Chicken Satay", "Korean Style Chicken Appetizer"], "gravy": ["Chilli Chicken Gravy", "Kung Pao Chicken", "Thai Basil Chicken", "Hot Garlic Chicken", "Schezwan Chicken Gravy"], "drink": ["Sprite", "Coca-Cola", "Thums Up"]}};
+const WA='918583939344';
+let cart={}; let comboSelections={};
+
+function renderStandard(){
+ const q=document.getElementById('search').value.toLowerCase(); let out='';
+ for(const [cat,items] of Object.entries(MENU)){
+   const shown=items.filter(x=>x[0].toLowerCase().includes(q)); if(!shown.length) continue;
+   out+=`<div class="cat">${cat}</div>`;
+   shown.forEach(([name,price])=>{
+  const id='s_'+btoa(unescape(encodeURIComponent(name))).replace(/=/g,'');
+  out+=`<div class="item"><div><div class="name">${name}</div><div class="price">₹${price}</div></div><button type="button" class="add" data-name="${encodeURIComponent(name)}" data-price="${price}">ADD</button></div>`;
+});
+ }
+ document.getElementById('standard').innerHTML=out;
+  document.querySelectorAll('#standard .add').forEach(btn=>{
+    btn.onclick=()=>{
+      addStandard(decodeURIComponent(btn.dataset.name), Number(btn.dataset.price));
+      btn.textContent='ADDED ✓';
+      btn.classList.add('selected');
+      setTimeout(()=>{btn.textContent='ADD';btn.classList.remove('selected')},700);
+    };
+  });
+}
+function addStandard(name,price){cart['S|'+name]=(cart['S|'+name]||0)+1;updateCart()}
+function updateCart(){let c=0,t=0;Object.entries(cart).forEach(([k,q])=>{const p=standardPrice(k);c+=q;t+=p*q});document.getElementById('count').textContent=c;document.getElementById('total').textContent=t}
+function standardPrice(k){let n=k.slice(2);for(const items of Object.values(MENU)){for(const x of items)if(x[0]===n)return x[1]}return 0}
+function comboPrice(name){return COMBO[name].price}
+function renderCombos(){
+ let out='<div class="cat">Combos</div>';
+ for(const [name,c] of Object.entries(COMBO)){
+  out+=`<div class="panel"><h3>${name} — ₹${c.price}</h3><div class="limit">${c.note}</div>`;
+  if(c.type==='momos'||c.type==='app'){
+   const max=c.max;
+   out+=`<p class="limit">Selected: <span id="count_${slug(name)}">0</span> / ${max}</p>`;
+   c.choices.forEach(x=>out+=`<div class="choice" id="${slug(name)}_${slug(x)}"><button type="button" class="select" onclick="toggleChoice(${JSON.stringify(name)},${JSON.stringify(x)},this)">SELECT</button> ${x}</div>`);
+   out+=`<button type="button" class="cartbtn" onclick="addCombo(${JSON.stringify(name)})">ADD COMBO TO CART</button>`;
+  } else {
+   for(const [key,label] of [['rice','1. Choose any 1 Rice / Noodles'],['app','2. Choose any 1 Appetizer'],['gravy','3. Choose any 1 Gravy'],['drink','4. Choose any 1 Soft Drink']]){
+     out+=`<p class="limit"><b>${label}</b></p><div id="grp_${slug(name)}_${key}">`;
+     c[key].forEach(x=>out+=`<button type="button" class="select" style="margin:4px" onclick="singleChoice(${JSON.stringify(name)},${JSON.stringify(key)},${JSON.stringify(x)},this)">${x}</button>`);
+     out+='</div>';
+   }
+   out+=`<button type="button" class="cartbtn" onclick="addCombo(${JSON.stringify(name)})">ADD COMBO TO CART</button>`;
+  }
+  out+='</div>';
+ }
+ document.getElementById('combos').innerHTML=out;
+}
+function slug(s){return btoa(unescape(encodeURIComponent(s))).replace(/[^a-zA-Z0-9]/g,'').slice(0,30)}
+function toggleChoice(combo,name,btn){
+ if(!comboSelections[combo])comboSelections[combo]={items:[],groups:{}};
+ let a=comboSelections[combo].items, max=COMBO[combo].max;
+ const idx=a.indexOf(name);
+ if(idx>=0){a.splice(idx,1);btn.textContent='SELECT';btn.classList.remove('selected')}
+ else{if(a.length>=max){alert('Maximum '+max+' choices reached. Remove one to change.');return}a.push(name);btn.textContent='SELECTED ✓';btn.classList.add('selected')}
+ document.getElementById('count_'+slug(combo)).textContent=a.length;
+}
+function singleChoice(combo,key,name,btn){
+ if(!comboSelections[combo])comboSelections[combo]={items:[],groups:{}};
+ comboSelections[combo].groups[key]=name;
+ document.querySelectorAll('#grp_'+slug(combo)+'_'+key+' .select').forEach(b=>{b.classList.remove('selected');if(b.textContent.startsWith('SELECTED'))b.textContent=b.dataset.orig||b.textContent.replace('SELECTED ✓','')});
+ btn.dataset.orig=name;btn.classList.add('selected');btn.textContent='SELECTED ✓';
+}
+function addCombo(name){
+ const c=COMBO[name], sel=comboSelections[name]||{items:[],groups:{}};
+ if(c.type==='momos'||c.type==='app'){if(sel.items.length!==c.max){alert('Please select exactly '+c.max+' choices.');return}}
+ else {for(const k of ['rice','app','gravy','drink'])if(!sel.groups[k]){alert('Please make all combo choices.');return}}
+ const key='C|'+name+'|'+JSON.stringify(sel);
+ cart[key]=(cart[key]||0)+1;updateCart();alert(name+' added to cart.');
+}
+function cartLines(){let lines=[],t=0,c=0;for(const [k,q] of Object.entries(cart)){if(k.startsWith('S|')){const n=k.slice(2),p=standardPrice(k);lines.push(`${n} x ${q} — ₹${p*q}`);t+=p*q;c+=q}else{const parts=k.split('|');const n=parts[1],sel=JSON.parse(parts.slice(2).join('|'));const p=comboPrice(n);let details=sel.items?.join(', ')||Object.entries(sel.groups).map(([a,b])=>a+': '+b).join(' | ');lines.push(`${n} x ${q} — ₹${p*q}\\n  Choices: ${details}`);t+=p*q;c+=q}}return {lines,t,c}}
+function openCart(){if(!Object.keys(cart).length){alert('Please select at least one item.');return}const x=cartLines();document.getElementById('summary').innerHTML=x.lines.map(z=>`<div class="summaryline">${z.replace(/\\n/g,'<br>')}</div>`).join('')+`<h3>Total: ₹${x.t}</h3>`;document.getElementById('checkout').classList.remove('hidden');document.getElementById('checkout').scrollIntoView({behavior:'smooth'})}
+function sendOrder(){const table=document.getElementById('table').value.trim();if(!table){alert('Please enter table number.');return}const x=cartLines();let msg=`*WOK & MOMOS EXPRESS — NEW ORDER*\\nTable: ${table}\\nCustomer: ${document.getElementById('customer').value||'Guest'}\\nPayment: ${document.getElementById('payment').value}\\n\\n${x.lines.join('\\n')}\\n\\n*TOTAL: ₹${x.t}*`;window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank')}
+renderStandard();renderCombos();updateCart();
+</script></body></html>
